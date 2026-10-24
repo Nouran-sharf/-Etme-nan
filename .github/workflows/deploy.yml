@@ -35,7 +35,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Web
-        run: flutter build web --release --base-href "/-Etme-nan/"
+        run: flutter build web --release --base-href "/Etmenan/"
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
