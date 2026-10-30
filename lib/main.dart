@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'theme/app_theme.dart';
 import 'state/app_state.dart';
 import 'screens/main_navigation_shell.dart';
+import 'screens/welcome_auth_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,8 +12,14 @@ void main() {
 
 /// Root application widget for "اطمئنان" / "Etmaenan".
 /// Initializes the shared in-memory AppState and configures bilingual localizations.
+/// Shows WelcomeAuthScreen on launch with Log In and Sign Up options into Sara's demo experience.
 class EtmaenanApp extends StatefulWidget {
-  const EtmaenanApp({super.key});
+  final bool? initialLoggedIn;
+
+  const EtmaenanApp({
+    super.key,
+    this.initialLoggedIn,
+  });
 
   @override
   State<EtmaenanApp> createState() => _EtmaenanAppState();
@@ -24,8 +31,8 @@ class _EtmaenanAppState extends State<EtmaenanApp> {
   @override
   void initState() {
     super.initState();
-    // Initialize in-memory state with Arabic as the default language
-    _appState = AppState();
+    // Initialize in-memory state with Arabic as default language
+    _appState = AppState(initialLoggedIn: widget.initialLoggedIn ?? false);
   }
 
   @override
@@ -56,8 +63,10 @@ class _EtmaenanAppState extends State<EtmaenanApp> {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            // Direct access to the new Main Navigation Shell (Home screen)
-            home: const MainNavigationShell(),
+            // Reactive root: Welcome/Auth screen when not logged in, Main Navigation Shell when entered
+            home: _appState.isLoggedIn
+                ? const MainNavigationShell()
+                : const WelcomeAuthScreen(),
           );
         },
       ),

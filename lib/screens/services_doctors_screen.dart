@@ -5,7 +5,7 @@ import '../theme/app_theme.dart';
 import '../localization/app_translations.dart';
 import '../models/doctor.dart';
 import '../data/mock_data.dart';
-import '../widgets/app_bar_language_switch.dart';
+import '../widgets/demo_app_bar_actions.dart';
 import 'doctor_details_screen.dart';
 
 /// Screen 2: Services & Doctors Screen
@@ -125,8 +125,7 @@ class _ServicesDoctorsScreenState extends State<ServicesDoctorsScreen> {
           ),
         ),
         actions: const [
-          AppBarLanguageSwitch(),
-          SizedBox(width: 8),
+          DemoAppBarActions(),
         ],
       ),
       body: SafeArea(

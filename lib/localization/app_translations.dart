@@ -223,6 +223,78 @@ class AppTranslations {
     'noArticlesFoundDesc': 'جربي استخدام كلمات بحث أخرى أو إزالة عامل التصفية.',
     'articlesCount': 'مقالات توعوية',
     'exploreAwarenessCta': 'تصفحي دليل الوعي والصحة',
+
+    // Demo User & Authentication Flow
+    'welcomeTitle': 'أهلاً بكِ في اطمئنان',
+    'welcomeSubtitle': 'رعاية متخصصة لصحة المرأة وسرطان الثدي - مصر',
+    'demoAccountNoticeTitle': 'جلسة استكشاف تفاعلية (ساره)',
+    'demoAccountNoticeDesc':
+        'تم إعداد هذا الحساب التجريبي لاستكشاف رحلة حجز المواعيد وإدارتها بالكامل كمستخدمة تجريبية (ساره) بدون الحاجة لبيانات اعتماد أو تسجيل حقيقي.',
+    'loginButton': 'تسجيل الدخول',
+    'signUpButton': 'إنشاء حساب جديد',
+    'demoLoginHint': 'كلا الخيارين يتيحان الدخول المباشر كـ ساره لتجربة الحجز',
+    'logoutButton': 'تسجيل الخروج',
+    'logoutConfirmTitle': 'تسجيل الخروج',
+    'logoutConfirmMessage':
+        'هل ترغبين في الخروج والعودة إلى شاشة البداية؟ (ستبقى بيانات الجلسة الحالية محفوظة لحين إعادة الضبط).',
+    'userGreeting': 'أهلاً بكِ، ساره 👋',
+    'demoUserBadge': 'حساب تجريبي: ساره',
+    'demoUserTag': 'حساب تجريبي',
+    'demoUserRole': 'مريضة تجريبية (للمعاينة والتقييم)',
+    'demoProfileTitle': 'الملف التجريبي (ساره)',
+    'demoProfileSubtitle': 'جلسة اختبار وتقييم رحلة حجز وإدارة المواعيد',
+    'demoSessionStats': 'إحصائيات الجلسة الحالية:',
+    'demoActiveBookings': 'المواعيد النشطة',
+    'demoCompletedBookings': 'المواعيد المكتملة',
+    'demoGeneratedNotifications': 'الإشعارات المسجلة',
+    'startDemoExploration': 'بدء استكشاف التطبيق',
+
+    // Reset Demo Action
+    'resetDemoAction': 'إعادة ضبط التجربة',
+    'resetDemoPrompt':
+        'سيؤدي هذا الإجراء إلى مسح كافة المواعيد والإشعارات والتقييمات المسجلة لساره وإعادة التطبيق إلى حالته الابتدائية الفارغة. هل تودين الاستمرار؟',
+    'resetDemoSuccess':
+        'تمت إعادة ضبط التجربة بنجاح، التطبيق جاهز بحالة ابتدائية فارغة.',
+
+    // Notifications
+    'notificationsTitle': 'الإشعارات والتنبيهات',
+    'noNotificationsTitle': 'لا توجد إشعارات حالياً',
+    'noNotificationsDesc':
+        'تبدأ الإشعارات فارغة وتُسجّل تلقائياً عند قيامكِ بحجز موعد، أو تعديله، أو إلغائه، أو محاكاة حالته أثناء التجربة.',
+    'markAllRead': 'تحديد الكل كمقروء',
+    'clearNotifications': 'مسح الإشعارات',
+    'notificationCleared': 'تم مسح الإشعارات',
+    'allNotificationsRead': 'تم تحديد جميع الإشعارات كمقروءة',
+    'notificationsBadgeTooltip': 'إشعارات الحجز والتحديثات',
+
+    // Appointment Status Simulator
+    'simulateStatusAction': 'محاكاة الحالة (تجريبي)',
+    'simulateStateTitle': 'محاكاة حالة الموعد (تجريبي)',
+    'simulateStateDesc':
+        'يتيح لكِ هذا التحكم تجربة كافة حالات المواعيد المدعومة في التطبيق فوراً دون الحاجة لانتظار موعد الزيارة:',
+    'statusConfirmedTitle': 'مؤكد (Confirmed)',
+    'statusConfirmedDesc': 'الموعد مؤكد ونشط ومحجوز (يظهر في القادمة)',
+    'statusPendingTitle': 'قيد الانتظار (Pending)',
+    'statusPendingDesc': 'الموعد بانتظار موافقة العيادة والمركز (يظهر في القادمة)',
+    'statusPostponedTitle': 'مؤجل / معاد جدولته (Postponed)',
+    'statusPostponedDesc': 'تم تأجيل الموعد أو تعديل توقيته (يظهر في القادمة)',
+    'statusCompletedTitle': 'مكتمل الزيارة (Completed)',
+    'statusCompletedDesc':
+        'تمت الزيارة بنجاح (ينتقل للمكتملة ويتيح تجربة التقييم ⭐)',
+    'statusCancelledTitle': 'ملغى (Cancelled)',
+    'statusCancelledDesc': 'تم إلغاء الحجز وتحرير وقت الموعد (ينتقل للملغاة)',
+    'statusNoShowTitle': 'فائت / عدم حضور (No-Show)',
+    'statusNoShowDesc': 'تم تسجيل عدم حضور المراجعة (ينتقل لسجل التاريخ)',
+    'statusSimulatedSuccess': 'تم تغيير حالة الموعد بنجاح إلى:',
+    'reviewNowPrompt': 'هل ترغبين في تقييم الزيارة الآن؟',
+    'reviewNowCta': 'تقييم الزيارة الآن',
+
+    // Empty States
+    'emptyAppointmentsTitle': 'لا توجد مواعيد مسجلة حتى الآن',
+    'emptyAppointmentsDesc':
+        'تبدأ جلسة ساره بدون أي مواعيد سابقة. ابدئي باختيار طبيب وتحديد وقت مناسب لحجز أول موعد.',
+    'myAppointmentsDemoBanner':
+        'حساب تجريبي: ساره — تبدأ الجلسة بدون مواعيد سابقة، وتُسجّل كافة الحجوزات والإشعارات من تفاعلكِ الفعلي.',
   };
 
   /// English translations
@@ -451,6 +523,85 @@ class AppTranslations {
     'noArticlesFoundDesc': 'Try searching with different keywords or clearing filters.',
     'articlesCount': 'educational articles',
     'exploreAwarenessCta': 'Explore Awareness Guide',
+
+    // Demo User & Authentication Flow
+    'welcomeTitle': 'Welcome to Etme\'nan',
+    'welcomeSubtitle':
+        'Specialized Breast Health & Women\'s Wellbeing Care - Egypt',
+    'demoAccountNoticeTitle': 'Interactive Demo Experience (Sara)',
+    'demoAccountNoticeDesc':
+        'This demo account allows you to explore the complete appointment booking and management journey as a demo user (Sara) without requiring credentials or real registration.',
+    'loginButton': 'Log In',
+    'signUpButton': 'Sign Up',
+    'demoLoginHint':
+        'Both options grant immediate access as Sara for booking exploration',
+    'logoutButton': 'Log Out',
+    'logoutConfirmTitle': 'Log Out',
+    'logoutConfirmMessage':
+        'Do you want to log out and return to the welcome screen? (Session data remains saved until reset).',
+    'userGreeting': 'Welcome, Sara 👋',
+    'demoUserBadge': 'Demo Account: Sara',
+    'demoUserTag': 'Demo Account',
+    'demoUserRole': 'Demo Patient (Evaluation & Prototype)',
+    'demoProfileTitle': 'Demo Profile (Sara)',
+    'demoProfileSubtitle':
+        'Testing and evaluation session for patient appointment journey',
+    'demoSessionStats': 'Current Session Stats:',
+    'demoActiveBookings': 'Active Appointments',
+    'demoCompletedBookings': 'Completed Visits',
+    'demoGeneratedNotifications': 'Logged Notifications',
+    'startDemoExploration': 'Start Exploring App',
+
+    // Reset Demo Action
+    'resetDemoAction': 'Reset Demo Session',
+    'resetDemoPrompt':
+        'This will clear all appointments, notifications, and reviews recorded for Sara and return the app to its initial empty state. Do you want to continue?',
+    'resetDemoSuccess':
+        'Demo session reset successfully, the app is ready in its initial empty state.',
+
+    // Notifications
+    'notificationsTitle': 'Notifications & Alerts',
+    'noNotificationsTitle': 'No notifications yet',
+    'noNotificationsDesc':
+        'Notifications start empty and are automatically recorded when you book, reschedule, cancel, or simulate an appointment during the demo.',
+    'markAllRead': 'Mark all as read',
+    'clearNotifications': 'Clear notifications',
+    'notificationCleared': 'Notifications cleared',
+    'allNotificationsRead': 'All notifications marked as read',
+    'notificationsBadgeTooltip': 'Booking notifications and updates',
+
+    // Appointment Status Simulator
+    'simulateStatusAction': 'Simulate Status (Demo)',
+    'simulateStateTitle': 'Simulate Appointment Status (Demo)',
+    'simulateStateDesc':
+        'This control lets you explore every supported appointment state immediately without waiting for the scheduled visit date:',
+    'statusConfirmedTitle': 'Confirmed',
+    'statusConfirmedDesc':
+        'Appointment confirmed and active (appears in Upcoming)',
+    'statusPendingTitle': 'Pending',
+    'statusPendingDesc':
+        'Pending approval and confirmation by clinic (appears in Upcoming)',
+    'statusPostponedTitle': 'Postponed / Rescheduled',
+    'statusPostponedDesc':
+        'Appointment rescheduled to a new time (appears in Upcoming)',
+    'statusCompletedTitle': 'Completed',
+    'statusCompletedDesc':
+        'Visit completed successfully (moves to Completed, enables Reviews ⭐)',
+    'statusCancelledTitle': 'Cancelled',
+    'statusCancelledDesc':
+        'Booking cancelled and slot released (moves to Cancelled)',
+    'statusNoShowTitle': 'No-Show',
+    'statusNoShowDesc': 'Patient attendance missed (moves to History)',
+    'statusSimulatedSuccess': 'Appointment status updated to:',
+    'reviewNowPrompt': 'Would you like to rate this visit now?',
+    'reviewNowCta': 'Rate Visit Now',
+
+    // Empty States
+    'emptyAppointmentsTitle': 'No appointments recorded yet',
+    'emptyAppointmentsDesc':
+        'Sara’s session starts with no past appointments. Start by choosing a doctor and selecting a time slot to book your first appointment.',
+    'myAppointmentsDemoBanner':
+        'Demo Account: Sara — Sessions start with zero appointments. All bookings and notifications are created from your live actions.',
   };
 
   /// Translate a key given the language context

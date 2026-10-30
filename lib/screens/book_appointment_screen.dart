@@ -33,6 +33,7 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
   String? _slotError;
   String? _generalError;
   bool _isSubmitting = false;
+  bool _initializedName = false;
 
   bool get isRescheduling => widget.existingAppointment != null;
 
@@ -52,6 +53,25 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
       final now = DateTime.now();
       _selectedDate = DateTime(now.year, now.month, now.day);
       _selectedTimeSlot = null;
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_initializedName && !isRescheduling) {
+      _initializedName = true;
+      final appState = AppState.of(context);
+      if (_patientNameController.text.isEmpty) {
+        _patientNameController.text = appState.currentUserName;
+      }
+      final hasAvailableToday = widget.doctor.availableTimeSlots.any(
+        (slot) =>
+            appState.isSlotAvailable(widget.doctor.id, _selectedDate, slot),
+      );
+      if (!hasAvailableToday) {
+        _selectedDate = _selectedDate.add(const Duration(days: 1));
+      }
     }
   }
 
@@ -477,6 +497,22 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
                   color: AppColors.error,
                   fontSize: 16,
                   fontWeight: FontWeight.bold),
+            ),
+            const Spacer(),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              decoration: BoxDecoration(
+                color: AppColors.softPink,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                AppTranslations.tr('demoUserBadge', isArabic),
+                style: GoogleFonts.elMessiri(
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primary,
+                ),
+              ),
             ),
           ],
         ),

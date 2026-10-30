@@ -4,7 +4,8 @@ import '../state/app_state.dart';
 import '../theme/app_theme.dart';
 import '../localization/app_translations.dart';
 import '../models/appointment.dart';
-import '../widgets/app_bar_language_switch.dart';
+import '../widgets/demo_app_bar_actions.dart';
+import '../widgets/appointment_status_simulator_sheet.dart';
 import '../widgets/review_bottom_sheet.dart';
 import 'book_appointment_screen.dart';
 
@@ -162,6 +163,64 @@ class _MyAppointmentsScreenState extends State<MyAppointmentsScreen>
     );
   }
 
+  void _confirmResetDemo(BuildContext context, AppState appState) {
+    final isArabic = appState.isArabic;
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+        title: Text(
+          AppTranslations.tr('resetDemoAction', isArabic),
+          style: GoogleFonts.elMessiri(
+            fontWeight: FontWeight.bold,
+            color: AppColors.primary,
+          ),
+        ),
+        content: Text(
+          AppTranslations.tr('resetDemoPrompt', isArabic),
+          style: GoogleFonts.elMessiri(fontSize: 14, height: 1.5),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: Text(
+              AppTranslations.tr('resetCancelButton', isArabic),
+              style: GoogleFonts.elMessiri(color: Colors.grey.shade700),
+            ),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.primary,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+            ),
+            onPressed: () async {
+              Navigator.of(ctx).pop();
+              await appState.resetDemoData();
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      AppTranslations.tr('resetDemoSuccess', isArabic),
+                      style: GoogleFonts.elMessiri(fontWeight: FontWeight.bold),
+                    ),
+                    backgroundColor: AppTheme.primaryPurple,
+                    behavior: SnackBarBehavior.floating,
+                  ),
+                );
+              }
+            },
+            child: Text(
+              AppTranslations.tr('resetConfirmButton', isArabic),
+              style: GoogleFonts.elMessiri(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final appState = AppState.of(context);
@@ -184,8 +243,7 @@ class _MyAppointmentsScreenState extends State<MyAppointmentsScreen>
           ),
         ),
         actions: const [
-          AppBarLanguageSwitch(),
-          SizedBox(width: 8),
+          DemoAppBarActions(),
         ],
         bottom: TabBar(
           controller: _tabController,
@@ -206,13 +264,61 @@ class _MyAppointmentsScreenState extends State<MyAppointmentsScreen>
           ],
         ),
       ),
-      body: TabBarView(
-        controller: _tabController,
+      body: Column(
         children: [
-          _buildAppointmentList(context, appState, allList, isArabic, 'emptyHistoryTitle'),
-          _buildAppointmentList(context, appState, upcomingList, isArabic, 'emptyUpcomingTitle'),
-          _buildAppointmentList(context, appState, completedList, isArabic, 'emptyCompletedTitle'),
-          _buildAppointmentList(context, appState, cancelledList, isArabic, 'emptyHistoryTitle'),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            color: AppColors.softPink.withValues(alpha: 0.35),
+            child: Row(
+              children: [
+                const Icon(Icons.info_outline_rounded,
+                    size: 16, color: AppColors.primary),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    AppTranslations.tr('myAppointmentsDemoBanner', isArabic),
+                    style: GoogleFonts.elMessiri(
+                      fontSize: 12,
+                      color: AppColors.darkText,
+                      height: 1.35,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 6),
+                TextButton(
+                  onPressed: () => _confirmResetDemo(context, appState),
+                  style: TextButton.styleFrom(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                    minimumSize: Size.zero,
+                  ),
+                  child: Text(
+                    AppTranslations.tr('resetDemoAction', isArabic),
+                    style: GoogleFonts.elMessiri(
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                _buildAppointmentList(context, appState, allList, isArabic,
+                    'emptyAppointmentsTitle', 'emptyAppointmentsDesc'),
+                _buildAppointmentList(context, appState, upcomingList, isArabic,
+                    'emptyUpcomingTitle', 'emptyUpcomingDesc'),
+                _buildAppointmentList(context, appState, completedList, isArabic,
+                    'emptyCompletedTitle', 'emptyCompletedDesc'),
+                _buildAppointmentList(context, appState, cancelledList, isArabic,
+                    'emptyHistoryTitle', 'emptyHistoryDesc'),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -224,12 +330,13 @@ class _MyAppointmentsScreenState extends State<MyAppointmentsScreen>
     List<Appointment> list,
     bool isArabic,
     String emptyKey,
+    String descKey,
   ) {
     if (list.isEmpty) {
       return _buildEmptyState(
         isArabic: isArabic,
         titleKey: emptyKey,
-        descKey: 'noUpcomingAppointmentsDesc',
+        descKey: descKey,
         icon: Icons.calendar_today_outlined,
         showCta: true,
       );
@@ -587,6 +694,32 @@ class _MyAppointmentsScreenState extends State<MyAppointmentsScreen>
                 ],
               ),
             ],
+
+            // Demo Simulator Button for evaluating all 6 states
+            const SizedBox(height: 12),
+            OutlinedButton.icon(
+              onPressed: () =>
+                  AppointmentStatusSimulatorSheet.show(context, appointment),
+              icon: const Icon(Icons.tune_rounded, size: 16),
+              label: Text(
+                AppTranslations.tr('simulateStatusAction', isArabic),
+                style: GoogleFonts.elMessiri(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: AppTheme.primaryPurple,
+                side: BorderSide(
+                  color: AppTheme.primaryPurple.withValues(alpha: 0.6),
+                  width: 1.2,
+                ),
+                minimumSize: const Size(double.infinity, 36),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
           ],
         ),
       ),

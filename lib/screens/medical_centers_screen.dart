@@ -4,7 +4,7 @@ import '../models/medical_center.dart';
 import '../state/app_state.dart';
 import '../localization/app_translations.dart';
 import '../theme/app_theme.dart';
-import '../widgets/app_bar_language_switch.dart';
+import '../widgets/demo_app_bar_actions.dart';
 import 'services_doctors_screen.dart';
 
 /// Screen listing verified partner medical centers in Egypt with search,
@@ -431,12 +431,12 @@ class _MedicalCentersScreenState extends State<MedicalCentersScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.info_outline_rounded,
+            icon: const Icon(Icons.photo_library_rounded,
                 color: AppTheme.primaryPurple),
             tooltip: AppTranslations.tr('viewPhotoCredits', isArabic),
             onPressed: () => _showPhotoCreditsDialog(context, isArabic),
           ),
-          const AppBarLanguageSwitch(),
+          const DemoAppBarActions(),
         ],
       ),
       body: Column(

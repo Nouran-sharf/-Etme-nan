@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اطمئنان — بطاقة تعريف التطبيق</title>
+<style>
+@font-face{font-family:'El Messiri';src:url('__FONT__') format('truetype');font-style:normal;font-weight:400 700;font-display:block}
+:root{--purple:#7F55B1;--secondary:#9B7EBD;--pink:#F49BAB;--soft-pink:#FFE1E0;--background:#FAF7FC;--ink:#261C2C;--muted:#6C5F70;--border:#E9E0EE}
+*{box-sizing:border-box}html,body{margin:0}body{font-family:'El Messiri',sans-serif;background:var(--background)}
+.artboard{position:relative;width:1600px;height:1000px;padding:64px;overflow:hidden;background:var(--background)}
+.ambient{position:absolute;width:650px;height:650px;border-radius:50%;background:var(--soft-pink);left:-255px;bottom:-320px;opacity:.65}
+.ambient.second{width:540px;height:540px;background:#E9E0EE;right:-250px;top:-310px;opacity:.6}
+.card{position:relative;height:872px;border:1.5px solid var(--border);border-radius:38px;background:#fff;overflow:hidden;box-shadow:0 22px 70px #7F55B10D}
+.top{position:absolute;top:44px;right:56px;left:56px;display:flex;align-items:center;justify-content:space-between;color:var(--purple);font-size:21px;font-weight:600}
+.category{display:flex;align-items:center;gap:10px;background:var(--background);border:1px solid var(--border);border-radius:30px;padding:9px 19px 7px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--pink)}
+.label{font-size:18px;color:var(--muted);font-weight:400}
+.main{position:absolute;top:151px;left:56px;right:56px;display:grid;grid-template-columns:1fr 510px;gap:72px;align-items:center;direction:rtl}
+.copy{padding-top:0}
+h1{font-size:116px;line-height:1.2;color:var(--purple);font-weight:700;margin:0 0 14px;letter-spacing:-2px}
+.tagline{margin:0 0 22px;font-size:38px;line-height:1.5;color:var(--ink);font-weight:700}
+.description{margin:0;max-width:690px;font-size:27px;line-height:1.95;color:var(--muted);font-weight:400}
+.accent{display:block;width:63px;height:5px;border-radius:10px;background:var(--pink);margin:28px 0 0}
+.brand-visual{position:relative;height:480px;display:flex;align-items:center;justify-content:center;background:var(--background);border:1px solid var(--border);border-radius:38px;overflow:hidden}
+.brand-visual:before{content:'';position:absolute;inset:25px;border:1px solid #E9E0EE;border-radius:50%}
+.logo{position:relative;display:block;width:398px;height:398px;object-fit:contain;border-radius:30px;box-shadow:0 16px 40px #7F55B117}
+.services{position:absolute;right:56px;left:56px;bottom:126px;padding-top:25px;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.service{display:flex;gap:15px;align-items:center;color:var(--purple);font-size:23px;font-weight:600;white-space:nowrap}
+.service-icon{width:47px;height:47px;background:var(--background);border-radius:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.service-icon svg{width:25px;height:25px;stroke:var(--purple);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.footer{position:absolute;bottom:0;left:0;right:0;height:92px;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 56px;font-size:25px;font-weight:500}
+.footer-note{font-size:19px;font-weight:400;color:#fff;opacity:.9}
+@media print{@page{size:1600px 1000px;margin:0}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.artboard{padding:64px}}
+</style>
+</head>
+<body>
+<main class="artboard" aria-label="بطاقة تعريف تطبيق اطمئنان">
+  <div class="ambient" aria-hidden="true"></div><div class="ambient second" aria-hidden="true"></div>
+  <article class="card">
+    <header class="top">
+      <span class="category"><span class="dot" aria-hidden="true"></span>رعاية متخصصة لصحة المرأة</span>
+      <span class="label">تصميم واجهة وتجربة المستخدم</span>
+    </header>
+    <div class="main">
+      <section class="copy">
+        <h1>اطمئنان</h1>
+        <p class="tagline">صحتكِ واطمئنانكِ أولاً</p>
+        <p class="description">تطبيق يرافقكِ في رحلة العناية بصحتكِ،<br>من التوعية والفحص المبكر إلى استعراض الأطباء<br>والمراكز الطبية وحجز المواعيد ومتابعتها،<br>مع دعم نفسي ورعاية متكاملة لصحة المرأة.</p>
+        <span class="accent" aria-hidden="true"></span>
+      </section>
+      <div class="brand-visual"><img class="logo" src="__LOGO__" alt="شعار تطبيق اطمئنان باللونين الوردي والبنفسجي"></div>
+    </div>
+    <div class="services" aria-label="مزايا التطبيق">
+      <div class="service"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-8-4.8-8-10a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.2-8 10-8 10Z"/><path d="M7.5 12h3l1-2 1.5 4 1-2h2.5"/></svg></span>وعي وفحص مبكر</div>
+      <div class="service"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 3v4m8-4v4M4 10h16m-12 5 2.5 2.5L16 13"/></svg></span>حجز ومتابعة المواعيد</div>
+      <div class="service"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 10 10 0 0 1-4-.9L3 21l1.8-5.3a8.5 8.5 0 1 1 16.2-4.2Z"/><path d="M8 11h8m-8 4h5"/></svg></span>دعم نفسي ورعاية</div>
+    </div>
+    <footer class="footer"><span>خطوتكِ الأولى نحو الرعاية والاطمئنان</span><span class="footer-note">وعيٌ يرافقكِ · رعايةٌ تطمئنكِ</span></footer>
+  </article>
+</main>
+</body>
+</html>

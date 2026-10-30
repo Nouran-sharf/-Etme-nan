@@ -6,7 +6,8 @@ import '../localization/app_translations.dart';
 import '../data/mock_data.dart';
 import '../models/appointment.dart';
 import '../widgets/etmaenan_logo.dart';
-import '../widgets/app_bar_language_switch.dart';
+import '../widgets/demo_app_bar_actions.dart';
+import '../widgets/appointment_status_simulator_sheet.dart';
 import 'health_awareness_screen.dart';
 
 /// Screen 1: Home Screen
@@ -215,17 +216,18 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
+        titleSpacing: 8,
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const EtmaenanLogo(size: 32, borderRadius: 8),
-            const SizedBox(width: 8),
+            const EtmaenanLogo(size: 26, borderRadius: 6),
+            const SizedBox(width: 6),
             Flexible(
               child: Text(
                 AppTranslations.tr('appName', isArabic),
                 overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.elMessiri(
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: AppColors.primary,
                 ),
@@ -234,8 +236,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         actions: const [
-          AppBarLanguageSwitch(),
-          SizedBox(width: 8),
+          DemoAppBarActions(),
         ],
       ),
       body: SafeArea(
@@ -355,20 +356,57 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.2),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Text(
-              AppTranslations.tr('demoBadge', isArabic),
-              style: GoogleFonts.elMessiri(
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
+          Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 8,
+            runSpacing: 6,
+            children: [
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  AppTranslations.tr('demoBadge', isArabic),
+                  style: GoogleFonts.elMessiri(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
               ),
-            ),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.18),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.person_rounded,
+                        size: 14, color: Colors.white),
+                    const SizedBox(width: 4),
+                    Flexible(
+                      child: Text(
+                        AppTranslations.tr('userGreeting', isArabic),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.elMessiri(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 12),
           Text(
@@ -969,26 +1007,53 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
             const SizedBox(height: 12),
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                onPressed: () => onNavigateToTab(3),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: AppColors.primary,
-                  side: const BorderSide(color: AppColors.primary),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+            Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () => onNavigateToTab(3),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppColors.primary,
+                      side: const BorderSide(color: AppColors.primary),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                    ),
+                    child: Text(
+                      AppTranslations.tr('viewInAppointments', isArabic),
+                      style: GoogleFonts.elMessiri(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 8),
                 ),
-                child: Text(
-                  AppTranslations.tr('viewInAppointments', isArabic),
-                  style: GoogleFonts.elMessiri(
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
+                const SizedBox(width: 8),
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () => AppointmentStatusSimulatorSheet.show(
+                        context, appointment),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppTheme.primaryPurple,
+                      side: BorderSide(
+                          color: AppTheme.primaryPurple.withValues(alpha: 0.8)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                    ),
+                    icon: const Icon(Icons.tune_rounded, size: 15),
+                    label: Text(
+                      AppTranslations.tr('simulateStatusAction', isArabic),
+                      style: GoogleFonts.elMessiri(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
           ],
         ),

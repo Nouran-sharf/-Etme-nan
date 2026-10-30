@@ -18,22 +18,21 @@ class AppBarLanguageSwitch extends StatelessWidget {
         : AppTranslations.tr('switchToArabic', isArabic);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 2.0),
       child: Tooltip(
         message: isArabic ? 'Switch to English' : 'التحويل إلى العربية',
         child: InkWell(
           onTap: () => appState.toggleLocale(),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(16),
           child: Container(
-            constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: AppColors.softPink.withValues(alpha: 0.5),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(16),
               border: Border.all(
                 color: AppColors.secondary.withValues(alpha: 0.35),
-                width: 1.2,
+                width: 1.0,
               ),
             ),
             child: Row(
@@ -41,14 +40,14 @@ class AppBarLanguageSwitch extends StatelessWidget {
               children: [
                 const Icon(
                   Icons.language_rounded,
-                  size: 18,
+                  size: 15,
                   color: AppColors.primary,
                 ),
-                const SizedBox(width: 6),
+                const SizedBox(width: 4),
                 Text(
                   targetLangLabel,
                   style: GoogleFonts.elMessiri(
-                    fontSize: 13,
+                    fontSize: 12,
                     fontWeight: FontWeight.bold,
                     color: AppColors.primary,
                   ),
